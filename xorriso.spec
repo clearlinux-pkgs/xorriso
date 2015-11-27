@@ -4,7 +4,7 @@
 #
 Name     : xorriso
 Version  : 1.4.0
-Release  : 1
+Release  : 2
 URL      : http://www.gnu.org/software/xorriso/xorriso-1.4.0.tar.gz
 Source0  : http://www.gnu.org/software/xorriso/xorriso-1.4.0.tar.gz
 Summary  : No detailed summary available
@@ -66,10 +66,10 @@ rm -rf %{buildroot}
 
 %files bin
 %defattr(-,root,root,-)
+%exclude /usr/bin/xorriso-tcltk
 /usr/bin/osirrox
 /usr/bin/xorrecord
 /usr/bin/xorriso
-/usr/bin/xorriso-tcltk
 /usr/bin/xorrisofs
 
 %files doc

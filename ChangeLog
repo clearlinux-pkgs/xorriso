@@ -1,3 +1,18 @@
+SVN trunk (to become libisoburn-1.4.2 or higher)
+===============================================================================
+* Bug fix: -backslash_codes "on" did not work outside quotes
+           and with showing "\r"
+* New API calls isoburn_ropt_set_truncate_mode() isoburn_ropt_get_truncate_mode()
+* New options with isoburn_ropt_set_extensions(): isoburn_ropt_map_*
+* New command -modesty_on_drive,
+  new -as cdrecord -immed, minbuf=, modesty_on_drive=
+* New command -ecma119_map
+* New command -read_fs
+* New -boot_image action "replay"
+* New command -file_name_limit, -as mkisofs -file_name_limit
+* New -find test -name_limit_blocker.
+
+
 libisoburn-1.4.0.tar.gz  Sun May 17 2015
 ===============================================================================
 * Bug fix: -dev or -indev of medium with non-ISO data caused SIGSEGV by NULL

@@ -1,4 +1,10 @@
-SVN trunk (to become libisoburn-1.4.2 or higher)
+
+SVN trunk (to become libisoburn-1.4.4 or higher)
+===============================================================================
+- no novelties yet -
+
+
+libisoburn-1.4.2.tar.gz  Sat Nov 28 2015
 ===============================================================================
 * Bug fix: -backslash_codes "on" did not work outside quotes
            and with showing "\r"
@@ -11,7 +17,7 @@ SVN trunk (to become libisoburn-1.4.2 or higher)
 * New -boot_image action "replay"
 * New command -file_name_limit, -as mkisofs -file_name_limit
 * New -find test -name_limit_blocker.
-
+* Result of a Coverity audit: 50+ code changes, but no easy-to-trigger bugs
 
 libisoburn-1.4.0.tar.gz  Sun May 17 2015
 ===============================================================================
@@ -44,7 +50,6 @@ libisoburn-1.3.8.tar.gz  Sat Jun 28 2014
 * New -find action report_sections
 * New command -concat
 * New commands -report_system_area and -report_el_torito
-
 
 libisoburn-1.3.6.pl01.tar.gz  Tue Mar 18 2014
 ===============================================================================
@@ -200,7 +205,6 @@ libisoburn-1.2.2.tar.gz  Mon Apr 02 2012
 * Bug fix: -osirrox on:sort_lba_on -extract from / restored nearly nothing
 * Bug fix: -as mkisofs without -graft-points could not handle names with "="
 * Bug fix: Relaxation options joliet_rec_mtime and iso1999_rec_mtime had wrong values
-
 
 libisoburn-1.2.0.tar.gz  Sat Jan 28 2012
 ===============================================================================

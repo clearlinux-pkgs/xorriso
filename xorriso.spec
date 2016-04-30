@@ -4,7 +4,7 @@
 #
 Name     : xorriso
 Version  : 1.4.3
-Release  : 5
+Release  : 6
 URL      : http://www.gnu.org/software/xorriso/xorriso-1.4.3.tar.gz
 Source0  : http://www.gnu.org/software/xorriso/xorriso-1.4.3.tar.gz
 Summary  : No detailed summary available

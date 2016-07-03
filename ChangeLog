@@ -1,8 +1,31 @@
 
-SVN trunk (to become libisoburn-1.4.4 or higher)
+SVN trunk (to become libisoburn-1.4.6 or higher)
 ===============================================================================
 - no novelties yet -
 
+libisoburn-1.4.4.tar.gz  Fri Jul 01 2016
+===============================================================================
+* Bug fix: -as mkisofs did not unescape "\=" in the source part of pathspecs
+* Bug fix: -boot_image "any" "system_area=/dev/zero" did not zeroize loaded
+           data
+* Bug fix: -pathspecs "on" did not properly handle "\\="
+* Bug fix: HFS+ production could cause MBR partition of type 0xEE without GPT
+* Bug fix: HFS+ directories could announce more children than they actually have
+* Bug fix: The HFS+ filesystem was not marked by in GPT of GRUB2 hybrid layout
+* Bug fix: When reading an ISO filesystem, the presence of
+           --protective-msdos-label was not recognized if a partition is
+           appended
+* Bug fix: xorrisofs option --protective-msdos-label did not work if no
+           system area data were given by option -G or alike
+* Bug fix: -modesty_on_drive properties timeout_sec, min_usec, max_usec
+           read wrong numbers from the parameter text
+* Letting -as mkisofs --norock revoke the special effect of -r
+* Letting -blank on overwritable media invalidate UDF extended descriptors
+* New -pathspecs mode "as_mkisofs"
+* New -boot_image setting mbr_force_bootable=, -as mkisofs --mbr-force-bootable
+* New -boot_image bootspecs appended_part_as=apm, part_like_isohybrid=on
+* New -as mkisofs options -appended_part_as_apm, -part_like_isohybrid
+* New command -scsi_dev_family, new -as cdrecord option drive_scsi_dev_family=
 
 libisoburn-1.4.2.tar.gz  Sat Nov 28 2015
 ===============================================================================

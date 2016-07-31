@@ -1,9 +1,5 @@
 
-SVN trunk (to become libisoburn-1.4.6 or higher)
-===============================================================================
-- no novelties yet -
-
-libisoburn-1.4.4.tar.gz  Fri Jul 01 2016
+SVN trunk (to become libisoburn-1.4.4 or higher)
 ===============================================================================
 * Bug fix: -as mkisofs did not unescape "\=" in the source part of pathspecs
 * Bug fix: -boot_image "any" "system_area=/dev/zero" did not zeroize loaded

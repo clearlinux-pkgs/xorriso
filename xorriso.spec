@@ -4,7 +4,7 @@
 #
 Name     : xorriso
 Version  : 1.4.6
-Release  : 9
+Release  : 10
 URL      : http://ftp.gnu.org/gnu/xorriso/xorriso-1.4.6.tar.gz
 Source0  : http://ftp.gnu.org/gnu/xorriso/xorriso-1.4.6.tar.gz
 Summary  : No detailed summary available

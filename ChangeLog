@@ -1,5 +1,20 @@
 
-SVN trunk (to become libisoburn-1.4.4 or higher)
+SVN trunk (to become libisoburn-1.4.6 or higher)
+===============================================================================
+* Bug fix: The default setting of -compliance did not apply rec_mtime to
+           Joliet and ISO:1999. mkisofs emulation was not affected by this bug.
+* Bug fix: -file_size_limit did not increase ISO level if necessary. 
+  Thanks Mattias Schlenker.
+* New API calls isoburn_igopt_set_gpt_guid(), isoburn_igopt_get_gpt_guid()
+* New command -use_immed_bit, new -as cdrecord option use_immed_bit=
+* New -volume_date mode "all_file_dates"
+* New -as mkisofs option --set_all_file_dates
+* New bootspec "gpt_disk_guid=", new -as mkisofs option --gpt_disk_guid
+* New -report_system_area modes "gpt_disk_guid", "make_guid"
+* New environment variable SOURCE_DATE_EPOCH
+* New -find action "set_to_mtime"
+
+libisoburn-1.4.4.tar.gz  Fri Jul 01 2016
 ===============================================================================
 * Bug fix: -as mkisofs did not unescape "\=" in the source part of pathspecs
 * Bug fix: -boot_image "any" "system_area=/dev/zero" did not zeroize loaded

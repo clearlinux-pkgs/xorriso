@@ -1,10 +1,29 @@
+libisoburn-1.4.8.tar.gz  Tue Sep 12 2017
+===============================================================================
+* Bug fix: -as mkisofs -no-emul-boot without -boot-load-size defaulted to
+           size 4, instead of full boot image size
+* Bug fix: -read_fs "norock" did not prevent reading of root Rock Ridge info
+* Bug fix: Mix of absolute and relative disk paths could cause SIGSEGV with
+           pattern expansion
+* Bug fix: --mbr-force-bootable did not get into effect with -append_partition
+* Bug fix: Exit value of failed -mount command was reported as 0
+* Bug fix: -boot_image actions "keep" and "patch" did not work any more.
+           Regression by libisofs 1.4.4.
+* New -find tests -maxdepth and -mindepth
+* New commands -update_lxi and -update_li
+* New API calls isoburn_igopt_set_iso_mbr_part_type(),
+  isoburn_igopt_get_iso_mbr_part_type()
+* New -boot_image bootspec iso_mbr_part_type=
+* New -as mkisofs option -iso_mbr_part_type
+* New -as mkisofs option -eltorito-platform
+* Properly refusing on Pseudo Overwritable formatted BD-R
 
-SVN trunk (to become libisoburn-1.4.6 or higher)
+libisoburn-1.4.6.tar.gz  Fri Sep 16 2016
 ===============================================================================
 * Bug fix: The default setting of -compliance did not apply rec_mtime to
            Joliet and ISO:1999. mkisofs emulation was not affected by this bug.
 * Bug fix: -file_size_limit did not increase ISO level if necessary. 
-  Thanks Mattias Schlenker.
+  Thanks to Mattias Schlenker.
 * New API calls isoburn_igopt_set_gpt_guid(), isoburn_igopt_get_gpt_guid()
 * New command -use_immed_bit, new -as cdrecord option use_immed_bit=
 * New -volume_date mode "all_file_dates"

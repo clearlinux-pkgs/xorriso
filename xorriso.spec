@@ -6,7 +6,7 @@
 #
 Name     : xorriso
 Version  : 1.4.8
-Release  : 12
+Release  : 13
 URL      : http://ftp.gnu.org/gnu/xorriso/xorriso-1.4.8.tar.gz
 Source0  : http://ftp.gnu.org/gnu/xorriso/xorriso-1.4.8.tar.gz
 Source99 : http://ftp.gnu.org/gnu/xorriso/xorriso-1.4.8.tar.gz.sig

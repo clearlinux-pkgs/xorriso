@@ -6,7 +6,7 @@
 #
 Name     : xorriso
 Version  : 1.4.8
-Release  : 14
+Release  : 15
 URL      : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.4.8.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.4.8.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.4.8.tar.gz.sig

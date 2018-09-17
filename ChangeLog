@@ -1,3 +1,12 @@
+libisoburn-1.5.0.tar.gz  Sat Sep 15 2018
+===============================================================================
+* Bug fix: Multi-session emulation was not recognized with non-zero partition
+           offset
+* New bit10 of isoburn_drive_aquire() to accept all xattr namespaces
+* New -xattr mode "any" to process all xattr namespaces of local filesystem
+* New -as mkisofs option --xattr-any
+* New -as mkisofs options -uid and -gid
+
 libisoburn-1.4.8.tar.gz  Tue Sep 12 2017
 ===============================================================================
 * Bug fix: -as mkisofs -no-emul-boot without -boot-load-size defaulted to

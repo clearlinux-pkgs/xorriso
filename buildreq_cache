@@ -1,0 +1,4 @@
+1.5.0
+acl-dev
+bzip2-dev
+pkgconfig(zlib)

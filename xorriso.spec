@@ -6,16 +6,16 @@
 #
 Name     : xorriso
 Version  : 1.5.0
-Release  : 17
+Release  : 18
 URL      : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.1
-Requires: xorriso-bin
-Requires: xorriso-license
-Requires: xorriso-man
+Requires: xorriso-bin = %{version}-%{release}
+Requires: xorriso-license = %{version}-%{release}
+Requires: xorriso-man = %{version}-%{release}
 BuildRequires : acl-dev
 BuildRequires : bzip2-dev
 BuildRequires : pkgconfig(zlib)
@@ -34,8 +34,7 @@ Provided under GPL version 3 or later. No warranty.
 %package bin
 Summary: bin components for the xorriso package.
 Group: Binaries
-Requires: xorriso-license
-Requires: xorriso-man
+Requires: xorriso-license = %{version}-%{release}
 
 %description bin
 bin components for the xorriso package.
@@ -44,7 +43,7 @@ bin components for the xorriso package.
 %package doc
 Summary: doc components for the xorriso package.
 Group: Documentation
-Requires: xorriso-man
+Requires: xorriso-man = %{version}-%{release}
 
 %description doc
 doc components for the xorriso package.
@@ -74,7 +73,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537206422
+export SOURCE_DATE_EPOCH=1559835768
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -86,17 +92,20 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1537206422
+export SOURCE_DATE_EPOCH=1559835768
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/xorriso
-cp COPYING %{buildroot}/usr/share/doc/xorriso/COPYING
-cp COPYRIGHT %{buildroot}/usr/share/doc/xorriso/COPYRIGHT
-cp libburn/COPYRIGHT %{buildroot}/usr/share/doc/xorriso/libburn_COPYRIGHT
-cp libisoburn/COPYRIGHT %{buildroot}/usr/share/doc/xorriso/libisoburn_COPYRIGHT
-cp libisofs/COPYRIGHT %{buildroot}/usr/share/doc/xorriso/libisofs_COPYRIGHT
-cp libjte/COPYRIGHT %{buildroot}/usr/share/doc/xorriso/libjte_COPYRIGHT
-cp xorriso/COPYRIGHT %{buildroot}/usr/share/doc/xorriso/xorriso_COPYRIGHT
+mkdir -p %{buildroot}/usr/share/package-licenses/xorriso
+cp COPYING %{buildroot}/usr/share/package-licenses/xorriso/COPYING
+cp COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/COPYRIGHT
+cp libburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libburn_COPYRIGHT
+cp libisoburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libisoburn_COPYRIGHT
+cp libisofs/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libisofs_COPYRIGHT
+cp libjte/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libjte_COPYRIGHT
+cp xorriso/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/xorriso_COPYRIGHT
 %make_install
+## install_append content
+ln -s xorrisofs %{buildroot}/usr/bin/mkisofs
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -104,6 +113,7 @@ cp xorriso/COPYRIGHT %{buildroot}/usr/share/doc/xorriso/xorriso_COPYRIGHT
 %files bin
 %defattr(-,root,root,-)
 %exclude /usr/bin/xorriso-tcltk
+/usr/bin/mkisofs
 /usr/bin/osirrox
 /usr/bin/xorrecord
 /usr/bin/xorriso
@@ -114,17 +124,17 @@ cp xorriso/COPYRIGHT %{buildroot}/usr/share/doc/xorriso/xorriso_COPYRIGHT
 %doc /usr/share/info/*
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/xorriso/COPYING
-/usr/share/doc/xorriso/COPYRIGHT
-/usr/share/doc/xorriso/libburn_COPYRIGHT
-/usr/share/doc/xorriso/libisoburn_COPYRIGHT
-/usr/share/doc/xorriso/libisofs_COPYRIGHT
-/usr/share/doc/xorriso/libjte_COPYRIGHT
-/usr/share/doc/xorriso/xorriso_COPYRIGHT
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/xorriso/COPYING
+/usr/share/package-licenses/xorriso/COPYRIGHT
+/usr/share/package-licenses/xorriso/libburn_COPYRIGHT
+/usr/share/package-licenses/xorriso/libisoburn_COPYRIGHT
+/usr/share/package-licenses/xorriso/libisofs_COPYRIGHT
+/usr/share/package-licenses/xorriso/libjte_COPYRIGHT
+/usr/share/package-licenses/xorriso/xorriso_COPYRIGHT
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/xorrecord.1
 /usr/share/man/man1/xorriso-tcltk.1
 /usr/share/man/man1/xorriso.1

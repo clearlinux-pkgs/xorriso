@@ -6,10 +6,10 @@
 #
 Name     : xorriso
 Version  : 1.5.0
-Release  : 18
+Release  : 20
 URL      : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
-Source99 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz.sig
+Source1 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.1
@@ -72,8 +72,9 @@ man components for the xorriso package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559835768
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1567906215
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -85,14 +86,14 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1559835768
+export SOURCE_DATE_EPOCH=1567906215
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xorriso
 cp COPYING %{buildroot}/usr/share/package-licenses/xorriso/COPYING
@@ -103,6 +104,8 @@ cp libisofs/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libisofs_C
 cp libjte/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libjte_COPYRIGHT
 cp xorriso/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/xorriso_COPYRIGHT
 %make_install
+## Remove excluded files
+rm -f %{buildroot}/usr/bin/xorriso-tcltk
 ## install_append content
 ln -s xorrisofs %{buildroot}/usr/bin/mkisofs
 ## install_append end
@@ -112,7 +115,6 @@ ln -s xorrisofs %{buildroot}/usr/bin/mkisofs
 
 %files bin
 %defattr(-,root,root,-)
-%exclude /usr/bin/xorriso-tcltk
 /usr/bin/mkisofs
 /usr/bin/osirrox
 /usr/bin/xorrecord

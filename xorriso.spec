@@ -6,7 +6,7 @@
 #
 Name     : xorriso
 Version  : 1.5.0
-Release  : 21
+Release  : 22
 URL      : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
 Source1 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz.sig

@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE9CBDFC0ABC0A854 (scdbackup@gmx.net)
 #
 Name     : xorriso
-Version  : 1.5.0
-Release  : 22
-URL      : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
-Source0  : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz
-Source1 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.0.tar.gz.sig
+Version  : 1.5.2
+Release  : 23
+URL      : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.2.tar.gz
+Source0  : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.2.tar.gz
+Source1 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.2.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.1
@@ -19,6 +19,7 @@ Requires: xorriso-man = %{version}-%{release}
 BuildRequires : acl-dev
 BuildRequires : bzip2-dev
 BuildRequires : pkgconfig(zlib)
+BuildRequires : util-linux
 
 %description
 ------------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Contribution of libburnia-project.org to the GNU Operating System
 GNU xorriso. By Thomas Schmitt <scdbackup@gmx.net>
 Derived from and supported by libburnia-project.org, published via:
 http://www.gnu.org/software/xorriso/xorriso_eng.html
-http://www.gnu.org/software/xorriso/xorriso-1.5.0.tar.gz
+http://www.gnu.org/software/xorriso/xorriso-1.5.2.tar.gz
 Provided under GPL version 3 or later. No warranty.
 ------------------------------------------------------------------------------
 
@@ -66,14 +67,15 @@ man components for the xorriso package.
 
 
 %prep
-%setup -q -n xorriso-1.5.0
+%setup -q -n xorriso-1.5.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568132941
+export SOURCE_DATE_EPOCH=1572295762
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -93,16 +95,15 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1568132941
+export SOURCE_DATE_EPOCH=1572295762
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xorriso
-cp COPYING %{buildroot}/usr/share/package-licenses/xorriso/COPYING
-cp COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/COPYRIGHT
-cp libburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libburn_COPYRIGHT
-cp libisoburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libisoburn_COPYRIGHT
-cp libisofs/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libisofs_COPYRIGHT
-cp libjte/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/libjte_COPYRIGHT
-cp xorriso/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/xorriso_COPYRIGHT
+cp %{_builddir}/xorriso-1.5.2/COPYING %{buildroot}/usr/share/package-licenses/xorriso/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/xorriso-1.5.2/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/431ac668b8e0901320f42864b3f9361854690ff2
+cp %{_builddir}/xorriso-1.5.2/libburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/a640a4b001c62a6f231213c9e10d5b985b05288b
+cp %{_builddir}/xorriso-1.5.2/libisoburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/90b747e2b215f2b36d0186df7f5d4d1553800e9a
+cp %{_builddir}/xorriso-1.5.2/libjte/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/2b06cff831412cdd2b25574c911a9f9726ce6e05
+cp %{_builddir}/xorriso-1.5.2/xorriso/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/90b747e2b215f2b36d0186df7f5d4d1553800e9a
 %make_install
 ## Remove excluded files
 rm -f %{buildroot}/usr/bin/xorriso-tcltk
@@ -127,13 +128,11 @@ ln -s xorrisofs %{buildroot}/usr/bin/mkisofs
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/xorriso/COPYING
-/usr/share/package-licenses/xorriso/COPYRIGHT
-/usr/share/package-licenses/xorriso/libburn_COPYRIGHT
-/usr/share/package-licenses/xorriso/libisoburn_COPYRIGHT
-/usr/share/package-licenses/xorriso/libisofs_COPYRIGHT
-/usr/share/package-licenses/xorriso/libjte_COPYRIGHT
-/usr/share/package-licenses/xorriso/xorriso_COPYRIGHT
+/usr/share/package-licenses/xorriso/2b06cff831412cdd2b25574c911a9f9726ce6e05
+/usr/share/package-licenses/xorriso/431ac668b8e0901320f42864b3f9361854690ff2
+/usr/share/package-licenses/xorriso/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+/usr/share/package-licenses/xorriso/90b747e2b215f2b36d0186df7f5d4d1553800e9a
+/usr/share/package-licenses/xorriso/a640a4b001c62a6f231213c9e10d5b985b05288b
 
 %files man
 %defattr(0644,root,root,0755)

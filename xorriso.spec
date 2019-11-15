@@ -6,7 +6,7 @@
 #
 Name     : xorriso
 Version  : 1.5.2
-Release  : 23
+Release  : 24
 URL      : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.2.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.2.tar.gz
 Source1 : https://mirrors.kernel.org/gnu/xorriso/xorriso-1.5.2.tar.gz.sig
@@ -14,6 +14,7 @@ Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.1
 Requires: xorriso-bin = %{version}-%{release}
+Requires: xorriso-info = %{version}-%{release}
 Requires: xorriso-license = %{version}-%{release}
 Requires: xorriso-man = %{version}-%{release}
 BuildRequires : acl-dev
@@ -41,13 +42,12 @@ Requires: xorriso-license = %{version}-%{release}
 bin components for the xorriso package.
 
 
-%package doc
-Summary: doc components for the xorriso package.
-Group: Documentation
-Requires: xorriso-man = %{version}-%{release}
+%package info
+Summary: info components for the xorriso package.
+Group: Default
 
-%description doc
-doc components for the xorriso package.
+%description info
+info components for the xorriso package.
 
 
 %package license
@@ -68,14 +68,14 @@ man components for the xorriso package.
 
 %prep
 %setup -q -n xorriso-1.5.2
+cd %{_builddir}/xorriso-1.5.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572295762
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1573791317
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -95,13 +95,14 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1572295762
+export SOURCE_DATE_EPOCH=1573791317
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xorriso
 cp %{_builddir}/xorriso-1.5.2/COPYING %{buildroot}/usr/share/package-licenses/xorriso/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 cp %{_builddir}/xorriso-1.5.2/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/431ac668b8e0901320f42864b3f9361854690ff2
 cp %{_builddir}/xorriso-1.5.2/libburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/a640a4b001c62a6f231213c9e10d5b985b05288b
 cp %{_builddir}/xorriso-1.5.2/libisoburn/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/90b747e2b215f2b36d0186df7f5d4d1553800e9a
+cp %{_builddir}/xorriso-1.5.2/libisofs/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/2236b80df839204a4250cd722f9f2178c77b387a
 cp %{_builddir}/xorriso-1.5.2/libjte/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/2b06cff831412cdd2b25574c911a9f9726ce6e05
 cp %{_builddir}/xorriso-1.5.2/xorriso/COPYRIGHT %{buildroot}/usr/share/package-licenses/xorriso/90b747e2b215f2b36d0186df7f5d4d1553800e9a
 %make_install
@@ -122,12 +123,16 @@ ln -s xorrisofs %{buildroot}/usr/bin/mkisofs
 /usr/bin/xorriso
 /usr/bin/xorrisofs
 
-%files doc
+%files info
 %defattr(0644,root,root,0755)
-%doc /usr/share/info/*
+/usr/share/info/xorrecord.info
+/usr/share/info/xorriso-tcltk.info
+/usr/share/info/xorriso.info
+/usr/share/info/xorrisofs.info
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/xorriso/2236b80df839204a4250cd722f9f2178c77b387a
 /usr/share/package-licenses/xorriso/2b06cff831412cdd2b25574c911a9f9726ce6e05
 /usr/share/package-licenses/xorriso/431ac668b8e0901320f42864b3f9361854690ff2
 /usr/share/package-licenses/xorriso/8624bcdae55baeef00cd11d5dfcfa60f68710a02

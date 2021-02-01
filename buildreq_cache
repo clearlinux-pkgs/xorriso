@@ -1,5 +1,4 @@
-1.5.2
+1.5.4
 acl-dev
 bzip2-dev
 pkgconfig(zlib)
-util-linux

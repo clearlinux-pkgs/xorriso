@@ -1,14 +1,26 @@
+Configure miss: const qualifier with iconv() 
+Configure miss: const qualifier with iconv() 
+Configure miss: desired functions in libedit
+Configure miss: desired functions in libedit
+Configure miss: desired functions in libreadline
+Configure miss: desired functions in libreadline
+Configure miss: dummy
+Configure miss: dummy
+Configure miss: dummy presence
+Configure miss: dummy presence
+Configure miss: dummy usability
+Configure miss: dummy usability
+Configure miss: iconv() in separate -liconv 
 Configure miss: iconv() in separate -liconv 
 Configure miss: libiconv in -liconv
-Configure miss: const qualifier with iconv() 
-Configure miss: dummy usability
-Configure miss: dummy presence
-Configure miss: dummy
-Configure miss: mt usability
-Configure miss: mt presence
-Configure miss: whether eaccess is declared
-Configure miss: overridden pkgconfig directory path
-Configure miss: desired functions in libreadline
-Configure miss: desired functions in libedit
+Configure miss: libiconv in -liconv
 Configure miss: missing scsi/scsi.h on Linux
-Configure miss: pthread_cancel()
+Configure miss: missing scsi/scsi.h on Linux
+Configure miss: mt presence
+Configure miss: mt presence
+Configure miss: mt usability
+Configure miss: mt usability
+Configure miss: overridden pkgconfig directory path
+Configure miss: overridden pkgconfig directory path
+Configure miss: whether eaccess is declared
+Configure miss: whether eaccess is declared
